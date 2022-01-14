@@ -5,7 +5,11 @@ export type ChainInfo = {
     name: string;
     hexChainId: string;
     rpcProvider: string;
+}
 
+export type ConnectCtx ={
+    web3:Web3;
+    account:string;
 }
 
 
@@ -13,6 +17,7 @@ export type ChainInfo = {
 export class Injectedweb3 {
 
     readonly injected: any = undefined;
+   
 
     constructor() {
 
@@ -26,6 +31,14 @@ export class Injectedweb3 {
 
     }
 
+    disconnect = async ()=> {
+        await this.injected.request({
+            method: 'wallet_requestPermissions',
+            params: [{ eth_accounts: {} }],
+        });
+
+    };
+
     connect = async (chainInfo: ChainInfo) => {
 
         await this.ensureCorrectChain(chainInfo);
@@ -34,7 +47,7 @@ export class Injectedweb3 {
 
         console.log(`injected : provider connected :${accounts[0]}`);
 
-        return new Web3(this.injected);
+        return {web3: new Web3(this.injected), account:accounts[0]} as ConnectCtx;
     };
 
     private ensureCorrectChain = async (chainInfo: ChainInfo) => {
