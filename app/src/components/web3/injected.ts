@@ -10,7 +10,7 @@ export type ChainInfo = {
 
 
 
-export default class Injectedweb3 {
+export class Injectedweb3 {
 
     readonly injected: any = undefined;
 

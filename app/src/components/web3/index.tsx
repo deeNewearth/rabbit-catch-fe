@@ -31,7 +31,7 @@ export function Connect() {
             return;
         }
 
-        const usingTestnet = qParams['network']= 'test';
+        const usingTestnet = qParams['network'] == 'test';
         console.log(`usingTestnet = ${usingTestnet}`);
 
         const chainInfo = supportedChains[usingTestnet?1:0];
