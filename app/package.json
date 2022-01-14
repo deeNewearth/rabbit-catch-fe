@@ -1,0 +1,52 @@
+{
+  "name": "rabbit-cache",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "@typechain/web3-v1": "^5.0.0",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^17.0.20",
+    "@types/react-dom": "^17.0.9",
+    "@web3-react/core": "^6.1.9",
+    "bootstrap": "5.1.3",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.1.1",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.0",
+    "sass": "^1.48.0",
+    "typechain": "^7.0.0",
+    "typescript": "^4.4.2",
+    "web-vitals": "^2.1.0",
+    "web3": "^1.6.1",
+    "wouter": "^2.8.0-alpha.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "generateTypes": "typechain --target=web3-v1  --out-dir ./typechain ../rabbit-catch-hardhat/artifacts/contracts/RabbitCatchMaster.sol/RabbitCatchMaster.json"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

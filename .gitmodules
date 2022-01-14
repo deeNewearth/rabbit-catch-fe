@@ -1,0 +1,3 @@
+[submodule "rabbit-catch-hardhat"]
+	path = rabbit-catch-hardhat
+	url = https://github.com/chinese-zodiac/rabbit-catch
