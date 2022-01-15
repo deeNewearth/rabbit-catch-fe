@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/shreedee/rabbit-catch-fe/static/css/main.f3a0571c.css",
-    "main.js": "/shreedee/rabbit-catch-fe/static/js/main.014c979d.js",
-    "static/js/787.bc05a33d.chunk.js": "/shreedee/rabbit-catch-fe/static/js/787.bc05a33d.chunk.js",
-    "static/media/12-lapins.jpg": "/shreedee/rabbit-catch-fe/static/media/12-lapins.dec3a11a51700811b64a.jpg",
-    "index.html": "/shreedee/rabbit-catch-fe/index.html",
-    "main.f3a0571c.css.map": "/shreedee/rabbit-catch-fe/static/css/main.f3a0571c.css.map",
-    "main.014c979d.js.map": "/shreedee/rabbit-catch-fe/static/js/main.014c979d.js.map",
-    "787.bc05a33d.chunk.js.map": "/shreedee/rabbit-catch-fe/static/js/787.bc05a33d.chunk.js.map"
+    "main.css": "/rabbit-catch-fe/static/css/main.665433ee.css",
+    "main.js": "/rabbit-catch-fe/static/js/main.4d1a2cc4.js",
+    "static/js/787.bc05a33d.chunk.js": "/rabbit-catch-fe/static/js/787.bc05a33d.chunk.js",
+    "static/media/12-lapins.jpg": "/rabbit-catch-fe/static/media/12-lapins.dec3a11a51700811b64a.jpg",
+    "index.html": "/rabbit-catch-fe/index.html",
+    "main.665433ee.css.map": "/rabbit-catch-fe/static/css/main.665433ee.css.map",
+    "main.4d1a2cc4.js.map": "/rabbit-catch-fe/static/js/main.4d1a2cc4.js.map",
+    "787.bc05a33d.chunk.js.map": "/rabbit-catch-fe/static/js/787.bc05a33d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f3a0571c.css",
-    "static/js/main.014c979d.js"
+    "static/css/main.665433ee.css",
+    "static/js/main.4d1a2cc4.js"
   ]
 }
