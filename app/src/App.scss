@@ -1,10 +1,15 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
 .app{
   height: 100vh;
-  
+ 
 }
 
-
 .topBar{
+  background-color: $gray-900;
+  height: 2.5rem;
+
   .chainName{
     font-size: smaller;
   }
@@ -17,4 +22,23 @@
 
 .mintView{
   height: 100%;
+}
+
+.bottomBar{
+
+  background-color: $gray-900;
+  height: 2.5rem;
+
+  font-size: x-small;
+
+  a{
+    &:hover{
+      color: $gray-200;
+    }
+
+    color: $gray-500;
+    text-decoration: none;
+    
+  }
+
 }

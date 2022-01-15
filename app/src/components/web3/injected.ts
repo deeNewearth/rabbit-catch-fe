@@ -10,6 +10,7 @@ export type ChainInfo = {
         czodiacNFT:string;
         rabbitRocket:string;
         rabbitGreed:string;
+        rabbitCreed:string;
     }
 }
 

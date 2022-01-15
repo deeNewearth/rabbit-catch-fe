@@ -5,6 +5,7 @@ import { Spinner } from 'react-bootstrap';
 
 import { CZodiacNFT } from '../../typechain/CZodiacNFT';
 import CZodiacNFT_json from '../../typechain/CZodiacNFT.json';
+
 //import { RabbitCatchMaster } from '../../typechain/RabbitCatchMaster';
 //import RabbitCatchMaster_json from '../../typechain/RabbitCatchMaster.json';
 
@@ -35,10 +36,13 @@ export default function OwnedView() {
 
                 const rabbitRocket = await rabbitCache.methods.rabbitRocket().call();
                 console.log(`rabbitRocket :${rabbitRocket}`);
+
                 const rabbitGreed = await rabbitCache.methods.rabbitGreed().call();
                 console.log(`rabbitGreed :${rabbitGreed}`);
 
-                const nft: CZodiacNFT = new web3.eth.Contract(CZodiacNFT_json.abi as any, nftAddress) as any;
+                const rabbitCreed = await rabbitCache.methods.rabbitCreed().call();
+                console.log(`rabbitCreed :${rabbitCreed}`);
+                //const nft: CZodiacNFT = new web3.eth.Contract(CZodiacNFT_json.abi as any, nftAddress) as any;
                 */
 
                 const nft: CZodiacNFT = new web3.eth.Contract(CZodiacNFT_json.abi as any, chainInfo.contracts.czodiacNFT) as any;

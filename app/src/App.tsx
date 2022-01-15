@@ -12,23 +12,24 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 import MintView from './components/mint';
 import OwnedView from './components/owned';
+import ReferralView from './components/referral';
 
-const AppOld = () => (
-  <div>
-    <h1>Application</h1>
 
-    <Link href="/users/JohnDoe">
-      <a className="link">Profile</a>
+function Bottombar(){
+
+  return <div className='bottomBar d-flex flex-row justify-content-center text-white-50 align-items-center gap-4'>
+
+    <Link href="/">
+      <a className="link">mint</a>
+    </Link>
+    <span>|</span>
+    <Link href="/referral">
+      <a className="link">referral</a>
     </Link>
 
-    <ConnectWallet />
 
-    <Route path="/users/:username">
-      {(params) => <div>Hello, {params.username}!</div>}
-    </Route>
-
-  </div>
-);
+  </div>;
+}
 
 function Topbar() {
   const web3Ctx = useweb3Context();
@@ -37,7 +38,7 @@ function Topbar() {
   if (!web3Ctx?.account)
     return null;
 
-  return <div className='topBar d-flex flex-row justify-content-end pe-2 text-white-50 align-items-end'>
+  return <div className='topBar d-flex flex-row justify-content-end pe-2 text-white-50 align-items-center'>
     <span className='me-2 chainName'>{web3Ctx.chainInfo.name}:</span>
     <ShowAddress address={web3Ctx.account} />
     <Button className="accountBtn" variant="link" onClick={async () => {
@@ -69,7 +70,7 @@ function MainContent() {
     </Route>
 
     <Route path="/referral">
-      {(params) => <div>referral page</div>}
+      {() => <ReferralView/>}
     </Route>
 
     <Route path="/:rest">
@@ -78,11 +79,9 @@ function MainContent() {
 
   </Switch>;
 
-  return <div>connected :{`-- ${web3Ctx?.reconnecting}`}</div>;
-  
 }
 
-export default function () {
+export default function App() {
   return <Web3Provider>
     <div className='app d-flex flex-column'>
 
@@ -92,6 +91,7 @@ export default function () {
         <MainContent />
       </div>
 
+      <Bottombar/>
 
     </div>
   </Web3Provider>;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useweb3Context, useConnectCalls } from '../web3';
-import { IAsyncResult, ShowError } from '../utils';
+import { IAsyncResult, ShowError, useQueryParams } from '../utils';
 import { Spinner } from 'react-bootstrap';
 
 import { RabbitCatchMaster } from '../../typechain/RabbitCatchMaster';
@@ -11,7 +11,13 @@ import { Row, Col, Button } from 'react-bootstrap';
 import TimesView from './times';
 import WinnersView from './winners';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
+
 import './mint.scss';
+
+const _refCodeStore ="lastRefcode";
 
 export default function MintView() {
 
@@ -27,6 +33,29 @@ export default function MintView() {
     const { chainInfo, account, web3 } = useweb3Context() || {};
 
     const { reloadNFTs } = useConnectCalls();
+
+    const qParams = useQueryParams();
+
+    const [referralCode, setReferralCode] = useState<string>('');
+
+    useEffect(()=>{
+
+        const refCode = qParams['code'] ||'';
+
+        if(!!refCode){
+            console.debug('using ref code from url');
+            setReferralCode( refCode);
+            localStorage?.setItem(_refCodeStore,refCode);
+        }else{
+
+            const savedOne = localStorage?.getItem(_refCodeStore);
+            if(!!savedOne){
+                console.debug('using ref code from localstorage');
+                setReferralCode( savedOne);
+            }
+        }
+
+    },[]);
 
     useEffect(() => {
 
@@ -87,8 +116,6 @@ export default function MintView() {
             </div>
 
 
-
-
             {!!mintState?.result && <>
                 {mintState?.result?.canMint ? <div className="d-grid gap-2 my-2">
 
@@ -99,6 +126,15 @@ export default function MintView() {
                     </div>}
 
                     {!!submitted?.error && <ShowError error={submitted.error} />}
+
+                    {!!referralCode && <div className='refCode'>
+                        <span>Using referral code : <span className='text-info'>{referralCode}</span></span>
+                        <Button variant='link' className="ms-2" onClick={()=>{
+                            setReferralCode('');
+                            localStorage?.removeItem(_refCodeStore);
+                        }}> <FontAwesomeIcon className="text-warning" icon={faTrashAlt}  /></Button>
+                    </div>
+                    }
 
                     <Button disabled={!!submitted?.isLoading} variant="primary mintBtn" size="lg" onClick={async () => {
                         try {
@@ -115,7 +151,7 @@ export default function MintView() {
 
                             const rabbitCache: RabbitCatchMaster = new web3.eth.Contract(RabbitCatchMaster_json.abi as any, chainInfo.contracts.rabbitMaster) as any;
 
-                            const tx = await rabbitCache.methods.mint(account, '').send({
+                            const tx = await rabbitCache.methods.mint(account, referralCode||'').send({
                                 value: mintState?.result?.priceWei,
                                 from: account,
                                 to: chainInfo.contracts.rabbitMaster
