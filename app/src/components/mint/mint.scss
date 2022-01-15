@@ -30,6 +30,51 @@
 
     .mintInfo{
         text-align: left;
+
+        p{
+            margin-bottom: 0;
+        }
+
+        .mintCount{
+            font-size: small;
+        }
+    }
+
+    .timesView{
+        font-size: smaller;
+    }
+
+    .winnersView{
+        font-size: smaller;
+
+        .winnerItem{
+
+            .certHolder{
+                position: relative;
+
+                .certback{
+                    font-size: 1.5rem;
+                }
+
+                .owned{
+                    position: absolute;
+                    font-size: 0.6rem;
+                    left: 1.4rem;
+                    top: -0.2rem;
+                }
+    
+                .score{
+                    position: absolute;
+                    top: 0.28rem;
+                    left: 0.54rem;
+                    font-size: 0.7rem;
+                    color: black;
+                    font-weight: bold;
+                }
+    
+            }
+
+        }
     }
 
     

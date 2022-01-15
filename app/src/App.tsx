@@ -72,6 +72,10 @@ function MainContent() {
       {(params) => <div>referral page</div>}
     </Route>
 
+    <Route path="/:rest">
+      {(params) => <div>404 - nothing here</div>}
+    </Route>
+
   </Switch>;
 
   return <div>connected :{`-- ${web3Ctx?.reconnecting}`}</div>;

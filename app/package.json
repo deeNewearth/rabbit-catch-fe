@@ -38,12 +38,14 @@
     "eslint-webpack-plugin": "^3.1.1",
     "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
+    "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.3",
     "jest-resolve": "^27.4.2",
     "jest-watch-typeahead": "^1.0.0",
     "mini-css-extract-plugin": "^2.4.5",
+    "moment": "^2.29.1",
     "node-polyfill-webpack-plugin": "^1.1.4",
     "postcss": "^8.4.4",
     "postcss-flexbugs-fixes": "^5.0.2",
@@ -81,7 +83,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "generateTypes": "typechain --target=web3-v1  --out-dir ./src/typechain ../rabbit-catch-hardhat/artifacts/contracts/RabbitCatchMaster.sol/RabbitCatchMaster.json && copyfiles --flat -V ../rabbit-catch-hardhat/artifacts/contracts/RabbitCatchMaster.sol/RabbitCatchMaster.json ./src/typechain  && typechain --target=web3-v1  --out-dir ./src/typechain ../rabbit-catch-hardhat/artifacts/contracts/czodiac/CZodiacNFT.sol/CZodiacNFT.json && copyfiles --flat -V ../rabbit-catch-hardhat/artifacts/contracts/czodiac/CZodiacNFT.sol/CZodiacNFT.json ./src/typechain"
+    "generateTypes": "typechain --target=web3-v1  --out-dir ./src/typechain ../rabbit-catch-hardhat/artifacts/contracts/RabbitCatchMaster.sol/RabbitCatchMaster.json && copyfiles --flat -V ../rabbit-catch-hardhat/artifacts/contracts/RabbitCatchMaster.sol/RabbitCatchMaster.json ./src/typechain  && typechain --target=web3-v1  --out-dir ./src/typechain ../rabbit-catch-hardhat/artifacts/contracts/czodiac/CZodiacNFT.sol/CZodiacNFT.json && copyfiles --flat -V ../rabbit-catch-hardhat/artifacts/contracts/czodiac/CZodiacNFT.sol/CZodiacNFT.json ./src/typechain && typechain --target=web3-v1  --out-dir ./src/typechain ../rabbit-catch-hardhat/artifacts/contracts/RabbitRocket.sol/RabbitRocket.json && copyfiles --flat -V ../rabbit-catch-hardhat/artifacts/contracts/RabbitRocket.sol/RabbitRocket.json ./src/typechain && typechain --target=web3-v1  --out-dir ./src/typechain ../rabbit-catch-hardhat/artifacts/contracts/RabbitGreed.sol/RabbitGreed.json && copyfiles --flat -V ../rabbit-catch-hardhat/artifacts/contracts/RabbitGreed.sol/RabbitGreed.json ./src/typechain"
   },
   "eslintConfig": {
     "extends": [

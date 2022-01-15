@@ -8,10 +8,16 @@ import constate from 'constate';
 //the default chain needs to be the first One
 const supportedChains: ChainInfo[] = [
     { chainId: '56', name: 'Binance Smart Chain', hexChainId: '0x38', rpcProvider: 'https://bsc-dataseed.binance.org/', contracts:{
-        rabbitMaster:'0x00'
+        rabbitMaster:'0x00',
+        czodiacNFT:'0x00',
+        rabbitRocket:'0x00',
+        rabbitGreed:'0x00'
     } },
     { chainId: '97', name: 'bsc Testnet', hexChainId: '0x61', rpcProvider: 'https://data-seed-prebsc-1-s1.binance.org:8545/',contracts:{
-        rabbitMaster:'0x0B354F634E142183827C6bB413E7afB4388D13C9'
+        rabbitMaster:'0x0B354F634E142183827C6bB413E7afB4388D13C9',
+        czodiacNFT:'0x17A894724063e274E355285B2B5A36d8b1493C0f',
+        rabbitRocket:'0x85b4E156d1BBEb532DD74cA503AC9a62B80bb9dE',
+        rabbitGreed:'0x2d5a53fF2850AEb2EEb1941B2D401A1a9B0C5B51'
     }  }
 ];
 

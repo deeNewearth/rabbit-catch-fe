@@ -7,6 +7,9 @@ export type ChainInfo = {
     rpcProvider: string;
     contracts:{
         rabbitMaster:string;
+        czodiacNFT:string;
+        rabbitRocket:string;
+        rabbitGreed:string;
     }
 }
 
@@ -60,7 +63,7 @@ export class Injectedweb3 {
         try {
             console.log(`current chain id ${this.injected.networkVersion}`);
 
-            if (this.injected.networkVersion == chainId) {
+            if (this.injected.networkVersion === chainId) {
                 console.log(`current chain id ${chainId} is correct`);
                 return;
             }
@@ -74,7 +77,7 @@ export class Injectedweb3 {
 
         } catch (switchError: any) {
 
-            const j = switchError.code;
+            //const j = switchError.code;
 
 
             // This error code indicates that the chain has not been added to MetaMask.
