@@ -1,0 +1,36 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import "~bootstrap/scss/mixins";
+
+.mint{
+    background-color: $gray-900;
+    min-height: 7rem;
+    
+    .logo{
+        background-image: url('./12-lapins.jpg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 7rem;
+        background-position: right;
+
+    }
+
+    @include media-breakpoint-up(md) {
+        .logo {
+            height: 10rem;
+            background-position: top right;
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        .logo {
+            height: 15rem;
+        }
+    }
+
+    .mintInfo{
+        text-align: left;
+    }
+
+    
+}

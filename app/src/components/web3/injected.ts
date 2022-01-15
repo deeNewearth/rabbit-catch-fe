@@ -5,6 +5,9 @@ export type ChainInfo = {
     name: string;
     hexChainId: string;
     rpcProvider: string;
+    contracts:{
+        rabbitMaster:string;
+    }
 }
 
 export type ConnectCtx ={

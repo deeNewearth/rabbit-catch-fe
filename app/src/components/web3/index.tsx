@@ -7,8 +7,12 @@ import constate from 'constate';
 
 //the default chain needs to be the first One
 const supportedChains: ChainInfo[] = [
-    { chainId: '56', name: 'Binance Smart Chain', hexChainId: '0x38', rpcProvider: 'https://bsc-dataseed.binance.org/' },
-    { chainId: '97', name: 'bsc Testnet', hexChainId: '0x61', rpcProvider: 'https://data-seed-prebsc-1-s1.binance.org:8545/' }
+    { chainId: '56', name: 'Binance Smart Chain', hexChainId: '0x38', rpcProvider: 'https://bsc-dataseed.binance.org/', contracts:{
+        rabbitMaster:'0x00'
+    } },
+    { chainId: '97', name: 'bsc Testnet', hexChainId: '0x61', rpcProvider: 'https://data-seed-prebsc-1-s1.binance.org:8545/',contracts:{
+        rabbitMaster:'0x0B354F634E142183827C6bB413E7afB4388D13C9'
+    }  }
 ];
 
 export const [Web3Provider,
@@ -19,7 +23,7 @@ export const [Web3Provider,
     );
 
 function useWeb3() {
-    const [ctx, setCtx] = useState<ConnectCtx & { chainInfo: ChainInfo, reconnecting?:boolean }>();
+    const [ctx, setCtx] = useState<ConnectCtx & { chainInfo: ChainInfo, reconnecting?:boolean, mintCount?:number }>();
 
     const connect = async (chainInfo: ChainInfo) => {
         const injected = new Injectedweb3();
@@ -47,9 +51,23 @@ function useWeb3() {
 
     }
 
+    const reloadNFTs = async () => {
+        
+        if(!ctx){
+            console.error('ctx is not yet initialized');
+            return;
+        }
+        
+        const mintCount = (ctx?.mintCount||0)+1;
+
+        setCtx({...ctx,mintCount});
+
+    };
+
     const connector = useMemo(() => ({
         connect,
-        disconnect
+        disconnect,
+        reloadNFTs
     }), [ctx]);
 
     return { ctx, connector };
@@ -90,10 +108,16 @@ export function ConnectWallet() {
         const usingTestnet = qParams['network'] == 'test';
         console.log(`usingTestnet = ${usingTestnet}`);
 
-        const chainInfo = supportedChains[usingTestnet ? 1 : 0];
 
         (async () => {
             try {
+
+                if(!usingTestnet){
+                    throw new Error('mainnet contracts not yet deployed. Try on testnet by adding "?network=test"');
+                }
+
+                const chainInfo = supportedChains[usingTestnet ? 1 : 0];
+
                 const ctx = await connect(chainInfo);
                 setWeb3Ctx({ result: { ctx } });
 

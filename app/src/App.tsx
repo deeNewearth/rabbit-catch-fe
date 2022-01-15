@@ -1,15 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.scss';
-import { Link, Route } from "wouter";
-import { Button } from 'react-bootstrap';
+import { Link, Route, Switch } from "wouter";
+import { Button, Container } from 'react-bootstrap';
 
 import { ConnectWallet, Web3Provider, useweb3Context, useConnectCalls } from './components/web3';
 
 import { ShowAddress } from './components/utils/display';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+
+import MintView from './components/mint';
+import OwnedView from './components/owned';
 
 const AppOld = () => (
   <div>
@@ -56,6 +58,21 @@ function MainContent() {
   if( (!web3Ctx?.account) || web3Ctx?.reconnecting){
     return <ConnectWallet />;
   }
+
+  return <Switch>
+    <Route path="/" >
+      {()=><Container className='mintView text-center'>
+            <MintView/>
+            <OwnedView/>
+        </Container>
+      }
+    </Route>
+
+    <Route path="/referral">
+      {(params) => <div>referral page</div>}
+    </Route>
+
+  </Switch>;
 
   return <div>connected :{`-- ${web3Ctx?.reconnecting}`}</div>;
   

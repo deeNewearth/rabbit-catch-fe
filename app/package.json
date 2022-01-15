@@ -28,6 +28,7 @@
     "camelcase": "^6.2.1",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "constate": "^3.3.0",
+    "copyfiles": "^2.4.1",
     "css-loader": "^6.5.1",
     "css-minimizer-webpack-plugin": "^3.2.0",
     "dotenv": "^10.0.0",
@@ -80,7 +81,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "generateTypes": "typechain --target=web3-v1  --out-dir ./typechain ../rabbit-catch-hardhat/artifacts/contracts/RabbitCatchMaster.sol/RabbitCatchMaster.json"
+    "generateTypes": "typechain --target=web3-v1  --out-dir ./src/typechain ../rabbit-catch-hardhat/artifacts/contracts/RabbitCatchMaster.sol/RabbitCatchMaster.json && copyfiles --flat -V ../rabbit-catch-hardhat/artifacts/contracts/RabbitCatchMaster.sol/RabbitCatchMaster.json ./src/typechain  && typechain --target=web3-v1  --out-dir ./src/typechain ../rabbit-catch-hardhat/artifacts/contracts/czodiac/CZodiacNFT.sol/CZodiacNFT.json && copyfiles --flat -V ../rabbit-catch-hardhat/artifacts/contracts/czodiac/CZodiacNFT.sol/CZodiacNFT.json ./src/typechain"
   },
   "eslintConfig": {
     "extends": [
