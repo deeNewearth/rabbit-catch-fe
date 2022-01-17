@@ -630,7 +630,9 @@ module.exports = function (webpackEnv) {
         }),
 
 
-        new NodePolyfillPlugin(),
+        new NodePolyfillPlugin({
+		    	excludeAliases: ["console"]
+		    }),
       // Generate an asset manifest file with the following content:
       // - "files" key: Mapping of all asset filenames to their corresponding
       //   output file so that tools can pick it up without having to parse
